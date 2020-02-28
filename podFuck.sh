@@ -4,9 +4,8 @@ showMenu(){
     echo "====== 你要搞咩？======"
     echo "1> remove trunk - 删除 .cocoaPods 文件夹下的 trunk 目录"
     echo "2> change repo  - 更换 repo 源为镜像源"
-    echo "3> TODO: load git proxy"
-    echo "4> TODO: unload git proxy"
-    echo "5> TODO: feach & download gits"
+    echo "3> TODO: setup git proxy"
+    echo "4> TODO: feach & download gits"
     echo "0> exit"
 }
 
@@ -31,7 +30,7 @@ showChangeRepoMenu(){
 
 changeRepo(){
     showChangeRepoMenu
-    while read -p ">>>change repo>>>" idx
+    while read -p "podFuck>>>change repo>>>" idx
     do
         if [[ ${idx} == "0" ]]; then
             break
@@ -71,6 +70,32 @@ changeRepo(){
     done
 }
 
+showGitProxysMenu(){
+    echo "====== git proxy ======"
+    echo "1> TODO: 设置 git 代理"
+    echo "2> TODO: 取消 git 代理"
+    echo "0> back"
+}
+
+gitProxys(){
+    showGitProxysMenu
+    while read -p "podFuck>>>git proxy>>>" idx
+    do
+        if [[ ${idx} == "0" ]]
+        then
+            break
+        elif [[ ${idx} == "1" ]]
+        then
+            break
+        elif [[ ${idx} == "1" ]]
+        then
+            break
+        else
+            showGitProxysMenu
+        fi
+    done
+}
+
 showMenu
 while read -p "podFuck>>>" idx
 do
@@ -83,6 +108,9 @@ do
     elif [[ ${idx} == "2" ]] 
     then
         changeRepo
+    elif [[ ${idx} == "3" ]]
+    then
+        gitProxys
     else
         showMenu
     fi
