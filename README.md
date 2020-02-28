@@ -4,7 +4,11 @@
 >
 > 本文结构按 CocoaPods 的安装与使用过程依次展开，假定读者已经具备使用 CocoaPods 的基础知识，并对 CocoaPods 的工作过程有一定了解
 >
-> pod version == 1.8.4
+> 脚本执行方法：
+>
+> ```powershell
+> chmod +x ./moon_pod.sh
+> ```
 
 
 
@@ -17,25 +21,25 @@
 #### Step2 - pod setup / pod repo update
 
 * 背景
-  * CocoaPods 在更新具体的第三方库源码之前，默认会去 GitHub 上下载一个约含 35 万个小文件的索引，默认存放在 ``~/.cocoapods/repos/``路径下的``master``文件夹中，后文用单词 repo 指代
-  * 如果用户指定了某些特殊的 source，如某些私有仓库，也会将对应的索引下载到该路径中，与``master``平级
-  * CocoaPods v1.7.x 开始开发官方 CDN，至 v1.8.x 开发完成，对应该路径下的``trunk``文件夹
+  * CocoaPods 在更新具体的第三方库源码之前，默认会去 GitHub 上下载一个约含 35 万个小文件的索引，默认存放在 ``~/.cocoapods/repos/`` 路径下的 ``master`` 文件夹中，后文用单词 repo 指代
+  * 如果用户指定了某些特殊的 source，如某些私有仓库，也会将对应的索引下载到该路径中，与 ``master`` 平级
+  * CocoaPods v1.7.x 开始开发官方 CDN，至 v1.8.x 开发完成，对应该路径下的 ``trunk`` 文件夹
 * 问题
-  * 如果以上任一仓库下载受阻，则会导致``pod setup / repo update / install / update``等命令报错
+  * 如果以上任一仓库下载受阻，则会导致 ``pod setup / repo update / install / update`` 等命令报错
   * 加入 `` --verbose --no-repo-update`` 参数只是让 pod 不去更新 repo，本质上没有用处
 
 * 解决方案
 
   * 针对 CDN
 
-    * 如不使用 ，可直接删除``trunk``文件夹
+    * 如不使用 ，可直接删除 ``trunk`` 文件夹
 
       ```powershell
       cd ~/.cocoapods/repos/
       rm -rf trunk
       ```
 
-    * 如果要用，建议自己搞定
+    * 如果要用 CDN，整个 pods 工程的结构要做变化，暂不建议
 
   * 针对私有库
 
@@ -77,4 +81,6 @@
 
 * 解决方案
   * 方案一  团队的 Podfile 保持不变，团队成员利用自己的翻墙软件给 git 挂上代理
+    * 注意浏览器 / 终端 / Git 代理设置一般均不通用
   * 方案二  通过自建的海外服务器 git clone 三方库源码，再从服务器把源码仓库下载至团队成员本地，约定好同一个路径，然后在 Podfile 内直接将对应的库指向本地路径
+    * 因为直接从 github.com 上都下载不下来，所以这里从自建服务器下载是关键，如果自建服务器也被墙了就得换

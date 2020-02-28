@@ -15,8 +15,7 @@ removeTrunk(){
     echo "主要命令："
     echo "  rm -rf ~/.cocoapods/repos/trunk"
     read -p "确定执行？(y/n)" x
-    if [ ${x} = "y" ] 
-    then
+    if [ ${x} = "y" ]; then
         rm -rf ~/.cocoapods/repos/trunk
         echo "执行完毕..."
     fi
@@ -26,6 +25,7 @@ showChangeRepoMenu(){
     echo "======change repo======"
     echo "1> 更换 repo 源为清华大学镜像"
     echo "2> 还原 repo 源为官方地址"
+    echo "3> TODO: 检测所有的 Podfile 文件 / 自动更换"
     echo "0> back"
 }
 
@@ -46,8 +46,7 @@ changeRepo(){
                     git remote -v
                     git remote set-url https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git
                 else
-                    cd ~/.cocoapods/repos
-                    git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
+                    git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git ~/.cocoapods/repos/master
                 fi
                 pod repo update
             fi
@@ -62,8 +61,7 @@ changeRepo(){
                     git remote -v
                     git remote set-url https://github.com/CocoaPods/Specs.git
                 else
-                    cd ~/.cocoapods/repos
-                    git clone https://github.com/CocoaPods/Specs.git master
+                    git clone https://github.com/CocoaPods/Specs.git ~/.cocoapods/repos/master
                 fi
                 pod repo update
             fi
