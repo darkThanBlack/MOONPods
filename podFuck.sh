@@ -87,7 +87,7 @@ gitProxys(){
         elif [[ ${idx} == "1" ]]
         then
             break
-        elif [[ ${idx} == "1" ]]
+        elif [[ ${idx} == "2" ]]
         then
             break
         else
