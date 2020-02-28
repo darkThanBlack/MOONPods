@@ -7,7 +7,8 @@
 > 脚本执行方法：
 >
 > ```powershell
-> chmod +x ./moon_pod.sh
+> chmod +x ./moon_pod.sh  #赋权
+> ./moon_pod.sh  #执行
 > ```
 
 
